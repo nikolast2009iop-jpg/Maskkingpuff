@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garderoba</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: white;
+        }
+
+        header {
+            padding: 25px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            color: #aaa;
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            background: white;
+            color: black;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
+        .products {
+            padding: 70px 8%;
+        }
+
+        .products h2 {
+            text-align: center;
+            font-size: 35px;
+            margin-bottom: 40px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .product {
+            background: #1b1b1b;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .product h3 {
+            margin-bottom: 10px;
+        }
+
+        .price {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid #333;
+            color: #777;
+        }
+
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Maskking</div>
+
+    <nav>
+        <a href="#">Početna</a>
+        <a href="#proizvodi">Proizvodi</a>
+        <a href="#kontakt">Kontakt</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Maskking</h1>
+    <p>Drugačiji ukus, drugačiji stil.</p>
+    <a href="#proizvodi" class="button">POGLEDAJ PROIZVODE</a>
+</section>
+
+<section class="products" id="proizvodi">
+    <h2>Naša ponuda</h2>
+
+    <div class="product-grid">
+
+        <div class="product">
+            <h3>Maskking GTS 2500</h3>
+            <p class="price">1600 RSD</p>
+            <a href="#kontakt" class="button">PORUČI</a>
+        </div>
+
+        <div class="product">
+            <h3>Maskking CC</h3>
+            <p class="price">1800 RSD</p>
+            <a href="#kontakt" class="button">PORUČI</a>
+        </div>
+
+        <div class="product">
+            <h3>Maskking Icex 40k</h3>
+            <p class="price">2300 RSD</p>
+            <a href="#kontakt" class="button">PORUČI</a>
+        </div>
+
+    </div>
+</section>
+
+<footer id="kontakt">
+    IG: puff_shoppppp
+    <br><br>
+    © 2026 MASKKING
+</footer>
+
+</body>
+</html>
