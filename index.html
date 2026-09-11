@@ -1,175 +1,416 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MASKKING PUFF</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<title>MASKKING PUFF</title>
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #111;
-            color: white;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        header {
-            padding: 25px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #333;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-        }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background:
+        radial-gradient(circle at 15% 20%, #5b21b6 0%, transparent 30%),
+        radial-gradient(circle at 85% 25%, #0ea5e9 0%, transparent 30%),
+        radial-gradient(circle at 50% 90%, #ec4899 0%, transparent 35%),
+        #09090b;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 25px;
-        }
+/* CINEMATIC LIGHT */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        linear-gradient(120deg,
+        transparent 0%,
+        rgba(255,255,255,0.04) 45%,
+        transparent 55%);
+    pointer-events: none;
+    animation: lightMove 8s infinite linear;
+}
 
-        .hero {
-            min-height: 70vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 30px;
-        }
+@keyframes lightMove {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
 
-        .hero h1 {
-            font-size: 60px;
-            margin-bottom: 20px;
-        }
+/* HEADER */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
 
-        .hero p {
-            color: #aaa;
-            font-size: 20px;
-            margin-bottom: 30px;
-        }
+    background: rgba(5,5,8,0.55);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
 
-        .button {
-            background: white;
-            color: black;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-        }
+.logo {
+    font-size: 27px;
+    font-weight: 900;
+    letter-spacing: 5px;
 
-        .products {
-            padding: 70px 8%;
-        }
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #60a5fa,
+        #f472b6,
+        #ffffff
+    );
 
-        .products h2 {
-            text-align: center;
-            font-size: 35px;
-            margin-bottom: 40px;
-        }
+    background-size: 300%;
+    -webkit-background-clip: text;
+    color: transparent;
 
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
+    animation: logoGlow 5s infinite;
+}
 
-        .product {
-            background: #1b1b1b;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-        }
+@keyframes logoGlow {
+    0% { background-position: 0%; }
+    50% { background-position: 100%; }
+    100% { background-position: 0%; }
+}
 
-        .product h3 {
-            margin-bottom: 10px;
-        }
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
 
-        .price {
-            color: #aaa;
-            margin-bottom: 20px;
-        }
+nav a:hover {
+    color: #60a5fa;
+    text-shadow: 0 0 15px #60a5fa;
+}
 
-        footer {
-            text-align: center;
-            padding: 40px;
-            border-top: 1px solid #333;
-            color: #777;
-        }
+/* HERO */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 20px 60px;
+    position: relative;
+}
 
-        @media (max-width: 700px) {
-            .hero h1 {
-                font-size: 40px;
-            }
+.hero-content {
+    max-width: 900px;
+    animation: appear 1.5s ease;
+}
 
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-            nav {
-                display: none;
-            }
-        }
-    </style>
+.hero h1 {
+    font-size: clamp(55px, 10vw, 130px);
+    letter-spacing: 12px;
+    font-weight: 900;
+
+    background: linear-gradient(
+        90deg,
+        #fff,
+        #93c5fd,
+        #f9a8d4,
+        #fff
+    );
+
+    background-size: 300%;
+    -webkit-background-clip: text;
+    color: transparent;
+
+    animation: logoGlow 6s infinite;
+
+    text-shadow: 0 0 40px rgba(255,255,255,0.15);
+}
+
+.hero p {
+    margin-top: 15px;
+    font-size: 21px;
+    letter-spacing: 6px;
+    color: #d4d4d8;
+}
+
+/* BUTTON */
+.button {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 16px 35px;
+
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 50px;
+
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 0 20px rgba(96,165,250,0.15);
+
+    transition: 0.4s;
+}
+
+.button:hover {
+    transform: translateY(-5px) scale(1.03);
+
+    background: rgba(255,255,255,0.15);
+
+    box-shadow:
+        0 0 25px rgba(96,165,250,0.5),
+        0 0 50px rgba(244,114,182,0.25);
+}
+
+/* PRODUCTS */
+.products {
+    padding: 110px 7%;
+    position: relative;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 60px;
+    letter-spacing: 4px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.product {
+    padding: 35px;
+    min-height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.12),
+            rgba(255,255,255,0.03)
+        );
+
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 25px;
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.35);
+
+    transition: 0.5s;
+}
+
+.product:hover {
+    transform: translateY(-12px);
+
+    border-color: rgba(147,197,253,0.5);
+
+    box-shadow:
+        0 20px 70px rgba(59,130,246,0.2),
+        0 0 40px rgba(236,72,153,0.12);
+}
+
+.product h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #bfdbfe;
+}
+
+.order {
+    display: inline-block;
+    text-align: center;
+    padding: 12px 20px;
+
+    color: white;
+    text-decoration: none;
+
+    border-radius: 30px;
+    background: linear-gradient(90deg, #2563eb, #db2777);
+
+    transition: 0.3s;
+}
+
+.order:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 25px rgba(219,39,119,0.4);
+}
+
+/* CONTACT */
+.contact {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.contact h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.contact p {
+    color: #d4d4d8;
+    font-size: 18px;
+}
+
+/* FOOTER */
+footer {
+    padding: 30px;
+    text-align: center;
+    color: #a1a1aa;
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* MOBILE */
+@media (max-width: 800px) {
+
+    header {
+        padding: 18px 20px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    nav a {
+        margin-left: 10px;
+        font-size: 12px;
+    }
+
+    .hero h1 {
+        letter-spacing: 5px;
+    }
+
+    .hero p {
+        font-size: 15px;
+        letter-spacing: 3px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <div class="logo">Maskking</div>
+    <div class="logo">MASKKING</div>
 
     <nav>
-        <a href="#">Početna</a>
-        <a href="#proizvodi">Proizvodi</a>
-        <a href="#kontakt">Kontakt</a>
+        <a href="#home">POČETNA</a>
+        <a href="#proizvodi">PROIZVODI</a>
+        <a href="#kontakt">KONTAKT</a>
     </nav>
 </header>
 
-<section class="hero">
-    <h1>Maskking</h1>
-    <p>Drugačiji ukus, drugačiji stil.</p>
-    <a href="#proizvodi" class="button">POGLEDAJ PROIZVODE</a>
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>MASKKING</h1>
+
+        <p>Drugačiji ukus, drugačiji stil.</p>
+
+        <a href="#proizvodi" class="button">
+            POGLEDAJ PROIZVODE
+        </a>
+
+    </div>
+
 </section>
 
 <section class="products" id="proizvodi">
-    <h2>Naša ponuda</h2>
+
+    <h2 class="section-title">PROIZVODI</h2>
 
     <div class="product-grid">
 
         <div class="product">
-            <h3>Maskking GTS 2500</h3>
-            <p class="price">1600 RSD</p>
-            <a href="#kontakt" class="button">PORUČI</a>
+            <h3>Maskking GTS</h3>
+            <div class="price">1600 RSD</div>
+            <a href="#kontakt" class="order">PORUČI</a>
         </div>
 
         <div class="product">
             <h3>Maskking CC</h3>
-            <p class="price">1800 RSD</p>
-            <a href="#kontakt" class="button">PORUČI</a>
+            <div class="price">1800 RSD</div>
+            <a href="#kontakt" class="order">PORUČI</a>
         </div>
 
         <div class="product">
             <h3>Maskking Icex 40k</h3>
-            <p class="price">2300 RSD</p>
-            <a href="#kontakt" class="button">PORUČI</a>
+            <div class="price">2300 RSD</div>
+            <a href="#kontakt" class="order">PORUČI</a>
         </div>
 
     </div>
+
 </section>
 
-<footer id="kontakt">
-    IG: puff_shoppppp
-    <br><br>
-    © 2026 MASKKING
+<section class="contact" id="kontakt">
+
+    <h2>KONTAKT</h2>
+
+    <p>Instagram: @puff_shoppppp</p>
+
+    <a href="#" class="button">JAVI NAM SE</a>
+
+</section>
+
+<footer>
+    © 2026 MASKKING 
 </footer>
 
 </body>
